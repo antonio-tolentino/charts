@@ -3,13 +3,13 @@ entries:
   attools:
   - apiVersion: v2
     appVersion: v1.0.0
-    created: "2021-05-03T15:56:02.971159088-03:00"
+    created: "2021-05-03T16:10:24.516693373-03:00"
     description: attools chart deploy pod with some diagnosis tools and clients for testing and troubleshooting.
-    digest: 8715ea9f95c0b278aaa5d1d6c4a121af44f48ea09c48635c33b38d2e02c37353
+    digest: 0a571eeb34cd328c3644a74b362ec6d8ee6cf07178692a955680afbdd4a329b6
     keywords:
     - attools
     name: attools
     urls:
     - https://antonio-tolentino.github.io/helm/test/attools-1.0.0.tgz
     version: 1.0.0
-generated: "2021-05-03T15:56:02.970803753-03:00"
+generated: "2021-05-03T16:10:24.516226258-03:00"
