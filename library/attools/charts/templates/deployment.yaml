@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: attools
+    version: {{ .Chart.AppVersion }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+  name: attools
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: attools
+      chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+      heritage: {{ .Release.Service }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: attools
+        chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+        heritage: {{ .Release.Service }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - image: {{ template "imageTag" . }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        name: attools   
+        resources:
+          limits:
+            cpu: {{ .Values.resources.limits.cpu | quote }}
+            memory: {{ .Values.resources.limits.memory | quote }}
+          requests:
+            cpu: {{ .Values.resources.requests.cpu | quote }}
+            memory: {{ .Values.resources.requests.memory | quote }}
+      {{- if (.Values.persist) }}
+        volumeMounts:
+          - name: attools-data
+            mountPath: /data 
+      volumes:
+        - name: attools-data
+          persistentVolumeClaim:
+            claimName: attools-data
+      {{- end }}

@@ -1,0 +1,7 @@
+apiVersion: v2
+appVersion: "v1.0.0"
+description: attools chart deploy pod with some diagnosis tools and clients for testing and troubleshooting.
+name: attools
+version: 1.0.0
+keywords:
+  - attools

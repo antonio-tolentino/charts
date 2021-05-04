@@ -1,0 +1,18 @@
+Thank you for installing Platformbuilders {{ .Chart.Name }}.
+
+Your release is named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get {{ .Release.Name }}
+  $ helm list {{ .Chart.Name }}
+
+ 
+## Using  Attools
+
+export ATTOOLS_POD=$(kubectl -n {{ .Release.Namespace }} get  pod -l app=attools -o jsonpath={.items[0].metadata.name})
+
+$ kubectl -n {{ .Release.Namespace }} exec -it $ATTOOLS_POD -- bash
+
+

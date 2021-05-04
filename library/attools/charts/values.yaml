@@ -1,0 +1,27 @@
+# Default Global configurations
+
+
+global:
+  imageRepository: "docker.io/tolentino"
+
+
+# Default Attools configurations
+
+## Image
+image: "attools"
+tag: "v1.0.0"
+imagePullPolicy: "Always"
+
+
+## Kubernetes resources
+resources:
+  limits:
+    cpu: "200m"
+    memory: "200Mi"
+  requests:
+    cpu: "50m"
+    memory: "50Mi"
+
+persist: false
+storageClassName: "standard"
+pvSize: "1Gi"

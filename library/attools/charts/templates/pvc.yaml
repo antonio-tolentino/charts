@@ -1,0 +1,19 @@
+{{- if (.Values.persist) }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: attools-data
+  labels:
+    app: attools
+    version: {{ .Chart.AppVersion }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  storageClassName: {{ .Values.storageClassName }}
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.pvSize | quote }}
+{{- end }}
