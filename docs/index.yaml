@@ -3,25 +3,14 @@ entries:
   attools:
   - apiVersion: v2
     appVersion: v1.0.0
-    created: "2021-07-29T13:02:14.239434065-03:00"
+    created: "2021-07-29T13:06:41.904739505-03:00"
     description: attools chart deploy pod with some diagnosis tools and clients for
       testing and troubleshooting.
-    digest: bb4868dc5c4f7d07b0a98653d338d70d4bd23fcc4cbb2f000fb47501d9d235ff
+    digest: ab2bb099c966601f961ca62c5afbec08576cc868f7bc94d6a82fdfbedc8af2db
     keywords:
     - attools
     name: attools
     urls:
     - https://antonio-tolentino.github.io/charts/attools-1.0.0.tgz
     version: 1.0.0
-  linkedsecrets:
-  - apiVersion: v2
-    appVersion: v0.6.0
-    created: "2021-07-29T13:02:14.240422235-03:00"
-    description: Linkedsecrets Helm chart for Kubernetes
-    digest: a485c402185fe8c69853f16c15d1c5694206e25a58007eb712e8fe0331a87e10
-    name: linkedsecrets
-    type: application
-    urls:
-    - https://antonio-tolentino.github.io/charts/linkedsecrets-0.1.0.tgz
-    version: 0.1.0
-generated: "2021-07-29T13:02:14.239059028-03:00"
+generated: "2021-07-29T13:06:41.904418622-03:00"
