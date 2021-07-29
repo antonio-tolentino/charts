@@ -72,6 +72,10 @@ spec:
 
 **[IMPORTANT]** Secret latest version will be used if field version is omitted.
 
+## Examples
+Click [Examples](https://antonio-tolentino.github.io/charts/aws/examples.zip) and get them.
+
+
 ## References
 
 [AWS Secret Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html)
