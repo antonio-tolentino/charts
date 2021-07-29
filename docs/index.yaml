@@ -3,14 +3,14 @@ entries:
   attools:
   - apiVersion: v2
     appVersion: v1.0.0
-    created: "2021-07-29T13:06:41.904739505-03:00"
+    created: "2021-07-29T13:32:50.828317796-03:00"
     description: attools chart deploy pod with some diagnosis tools and clients for
       testing and troubleshooting.
-    digest: ab2bb099c966601f961ca62c5afbec08576cc868f7bc94d6a82fdfbedc8af2db
+    digest: 9f1114172c6a064e711e4fe0202e88d6a5007ff90e3cdac456c4f50cb80b5bea
     keywords:
     - attools
     name: attools
     urls:
     - https://antonio-tolentino.github.io/charts/attools-1.0.0.tgz
     version: 1.0.0
-generated: "2021-07-29T13:06:41.904418622-03:00"
+generated: "2021-07-29T13:32:50.827940384-03:00"
