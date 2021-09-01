@@ -126,11 +126,6 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 
-## Application secrets
-secret: 
-  enabled: false
-  name: secret-example
-
 ## Application configmap
 configMap:
   enabled: false
