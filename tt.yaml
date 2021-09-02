@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp
+  labels:
+    helm.sh/chart: generic-1.1.0
+    app.kubernetes.io/name: generic
+    app.kubernetes.io/instance: myapp
+    app.kubernetes.io/version: ""
+    app: myapp
+    version: ""
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+spec:
+  tls:
+    - hosts:
+        - "myapp.domain.io"
+      secretName: domain-tls
+  rules:
+    - host: "myapp.domain.io"
+      http:
+        paths:
+        - path: /
+          backend:
+            service:
+              name: myapp
+              port: 
+                number: 80
+          pathType: ImplementationSpecific
