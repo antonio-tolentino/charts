@@ -48,3 +48,19 @@ helm upgrade --install <RELEASE-NAME> \
 --set istio.tls.credentialName=domain-tls \
 <REPO-NAME>/generic
 ```
+
+## Linkedsecrets Azure Example
+
+```bash
+helm upgrade --install <RELEASE-NAME> \
+--create-namespace=true \
+--namespace=<NAMESPACE> \
+--set linkedsecrets.enabled=true \
+--set linkedsecrets.name=apptest-linkedsecrets \
+--set linkedsecrets.providerDataFormat=JSON \
+--set linkedsecrets.providerOptions."keyvault"=linkedsecret \
+--set linkedsecrets.providerOptions."secret"=opaque-secret-json \
+--set linkedsecrets.secretName=apptest-kubernetes-secret \
+--set linkedsecrets.schedule="@every 5m" \
+<REPO-NAME>/generic
+```
