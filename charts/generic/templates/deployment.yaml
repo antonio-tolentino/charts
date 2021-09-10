@@ -33,10 +33,15 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-          {{- with .Values.podEnvironment }}
-            {{- toYaml . | nindent 12 }}
-          {{- end }} 
+          envFrom:
+            {{- if .Values.configMap.enabled }}
+            - configMapRef:
+                name: {{ .Values.configMap.name }}
+            {{- end }}
+            {{- if .Values.linkedsecrets.enabled }}
+            - secretRef:
+                name: {{ .Values.linkedsecrets.secretName}}
+            {{- end }} 
           ports:
             - name: http
               containerPort: {{ .Values.containerPort}}

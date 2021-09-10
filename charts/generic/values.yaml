@@ -126,30 +126,13 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 
-## Application configmap
+## Application configmap 
 configMap:
   enabled: false
   name: configmap-example
   keys: 
    logFile: /tmp/output.log
    logSize: 10m
-
-## Application environment variables
-podEnvironment: []
-#podEnvironment:
-#  - name: LOG_LEVEL
-#    value: "INFO"
-#  - name: LOG_FILE
-#    valueFrom:
-#      configMapKeyRef:
-#        key: logFile
-#        name: configmap-example
-#  - name: DB_HOST
-#    valueFrom:
-#      secretKeyRef:
-#        key: host
-#        name: secret-example
-
 
 
 ## Linkedsecrets
