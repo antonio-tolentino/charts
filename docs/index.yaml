@@ -3,10 +3,10 @@ entries:
   attools:
   - apiVersion: v2
     appVersion: v1.0.0
-    created: "2021-09-08T09:46:16.438130854-03:00"
+    created: "2021-09-10T09:30:57.100654274-03:00"
     description: attools chart deploy pod with some diagnosis tools and clients for
       testing and troubleshooting.
-    digest: 66f525610ba47a2d438154017e9908fac2619655ada1eee29758af98fd98baa4
+    digest: 2cf1df53f0bf171a764835e254cb79f281f314d55818455f2c6f5421077abb7d
     keywords:
     - attools
     name: attools
@@ -16,12 +16,12 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-09-08T09:46:16.438691834-03:00"
+    created: "2021-09-10T09:30:57.101247056-03:00"
     description: Generic Helm chart for Kubernetes
-    digest: aa03b2a957c193a65ea040a66a936dea3f1674e168c0a51c20939e3727bb7111
+    digest: c7ad94d3dc736a85f5ca8bbc7357d0544cb3fc5e9f6c05f4cc9631d4269a11cd
     name: generic
     type: application
     urls:
     - https://antonio-tolentino.github.io/charts/generic-1.1.0.tgz
     version: 1.1.0
-generated: "2021-09-08T09:46:16.437730794-03:00"
+generated: "2021-09-10T09:30:57.100269331-03:00"
