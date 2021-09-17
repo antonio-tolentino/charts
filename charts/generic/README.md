@@ -25,6 +25,8 @@ helm upgrade --install <RELEASE-NAME> \
 helm upgrade --install <RELEASE-NAME> \
 --create-namespace=true \
 --namespace=<NAMESPACE>  \
+--set image.repository=<IMAGE-REPOSITORY> \
+--set image.tag=<IMAGE-TAG> \
 --set ingress.enabled=true \
 --set ingress.annotations."cert-manager\.io/cluster-issuer"=letsencrypt-prod \
 --set ingress.hosts[0].host=myapp.domain.io \
@@ -40,6 +42,8 @@ helm upgrade --install <RELEASE-NAME> \
 helm upgrade --install <RELEASE-NAME> \
 --create-namespace=true \
 --namespace=<NAMESPACE> \
+--set image.repository=<IMAGE-REPOSITORY> \
+--set image.tag=<IMAGE-TAG> \
 --set istio.enabled=true \
 --set istio.gateway.enabled=true \
 --set istio.dnsNames[0]=myapp.domain.io \
@@ -55,6 +59,8 @@ helm upgrade --install <RELEASE-NAME> \
 helm upgrade --install <RELEASE-NAME> \
 --create-namespace=true \
 --namespace=<NAMESPACE> \
+--set image.repository=<IMAGE-REPOSITORY> \
+--set image.tag=<IMAGE-TAG> \
 --set linkedsecrets.enabled=true \
 --set linkedsecrets.name=apptest-linkedsecrets \
 --set linkedsecrets.providerDataFormat=JSON \

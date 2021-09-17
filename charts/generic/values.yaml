@@ -1,86 +1,22 @@
-# Default values for generic.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+# Generic helm chart configurations
 
-
-replicaCount: 1
-
+##### BEGIN - Tekcton Triggers duty #####
 image:
   repository: ""
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
+##### END - Tekcton Triggers duty #####
 
-imagePullSecrets: []
 
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
-
-podAnnotations: {}
-
-podSecurityContext: {}
-  # fsGroup: 2000
-
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
-
+  
+  
+##### BEGIN - Developer team duty #####
+replicaCount: 1  
+  
 service:
   type: ClusterIP
   port: 80
-
-## NGINX Ingress controller
-ingress:
-  enabled: false
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    # cert-manager.io/issuer: "nameOfIssuer"
-    # cert-manager.io/cluster-issuer: "nameOfClusterIssuer"
-  hosts: []
-    #- host: chart-example.local
-    #  paths: 
-    #    - /     
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
-
-## istio service mesh
-istio:
-  enabled: false
-  dnsNames: 
-    - chart-example.local
-  tls: 
-    enabled: false
-    ## localCert = true secret with certificate and private key must be defined in credentialName
-    ## localCert = false certificate and private key is expected to be attached to Load Balancer
-    localCert: true
-    credentialName: mydomain-tls
-  certManager:
-    enabled: false
-    issuer:
-      name: letsencrypt-prod
-      kind: ClusterIssuer
-  gateway:
-    enabled: false
-    httpsRedirect: false
-    http: false
-  virtualservice:
-    gateways: []
-      #- istio-system/my-gateway-example
-    paths: 
-      - /
-    
 
 resources: {}
   #uncomment the following lines, adjust them as necessary, and remove the curly braces after 'resources:'.
@@ -116,8 +52,7 @@ livenessProbe:
 #  successThreshold: 1
 #  timeoutSeconds: 1
   
-
-
+  
 autoscaling:
   enabled: false
   minReplicas: 1
@@ -133,8 +68,7 @@ configMap:
   keys: 
    logFile: /tmp/output.log
    logSize: 10m
-
-
+   
 ## Linkedsecrets
 linkedsecrets:
   enabled: false
@@ -147,9 +81,83 @@ linkedsecrets:
     keyvault: linkedsecret
     secret: opaque-secret-json
   secretName: myapp-kubernetes-secret
-  schedule: "\"@every 10m\""
+  schedule: "\"@every 10m\""   
+  
+##### END - Developer team duty #####  
 
 
+
+
+
+
+##### BEGIN - Devops team duty #####
+
+imagePullSecrets: []
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+## NGINX Ingress controller
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # cert-manager.io/issuer: "nameOfIssuer"
+    # cert-manager.io/cluster-issuer: "nameOfClusterIssuer"
+  hosts: 
+    - host: chart-example.local
+      paths: 
+        - /     
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+## istio service mesh
+istio:
+  enabled: false
+  dnsNames: 
+    - chart-example.local
+  tls: 
+    enabled: false
+    ## localCert = true secret with certificate and private key must be defined in credentialName
+    ## localCert = false certificate and private key is expected to be attached to Load Balancer
+    localCert: true
+    credentialName: mydomain-tls
+  certManager:
+    enabled: false
+    issuer:
+      name: letsencrypt-prod
+      kind: ClusterIssuer
+  gateway:
+    enabled: false
+    httpsRedirect: false
+    http: false
+  virtualservice:
+    gateways: []
+      #- istio-system/my-gateway-example
+    paths: 
+      - /
+    
 
 nodeSelector: {}
 
@@ -157,4 +165,4 @@ tolerations: []
 
 affinity: {}
 
-
+##### END - Devops team duty #####
