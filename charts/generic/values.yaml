@@ -18,14 +18,13 @@ service:
   type: ClusterIP
   port: 80
 
-resources: {}
-  #uncomment the following lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  #limits:
-  #  cpu: 100m
-  #  memory: 128Mi
-  #requests:
-  #  cpu: 100m
-  #  memory: 128Mi
+resources: 
+  limits:
+    cpu: 200m
+    memory: 200Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi
 
 containerPort: 8080
 
@@ -57,8 +56,8 @@ autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetCPUUtilizationPercentage: 60
+  targetMemoryUtilizationPercentage: 60
 
 
 ## Application configmap 
@@ -132,17 +131,12 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+
 ## istio service mesh
 istio:
   enabled: false
   dnsNames: 
     - chart-example.local
-  tls: 
-    enabled: false
-    ## localCert = true secret with certificate and private key must be defined in credentialName
-    ## localCert = false certificate and private key is expected to be attached to Load Balancer
-    localCert: true
-    credentialName: mydomain-tls
   certManager:
     enabled: false
     issuer:
@@ -152,9 +146,13 @@ istio:
     enabled: false
     httpsRedirect: false
     http: false
+    ## true =  Set credentialName with the secret name to store private key and certificate chain (letsencrypt|imported certs)
+    ## false = private key and certificate chain is expected to be attached to Load Balancer
+    localCert: false
+    credentialName: mydomain-tls
   virtualservice:
-    gateways: []
-      #- istio-system/my-gateway-example
+    gateways: 
+      - istio-system/my-gateway
     paths: 
       - /
     

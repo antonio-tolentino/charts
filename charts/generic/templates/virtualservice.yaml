@@ -11,12 +11,12 @@ spec:
   - {{ . | quote }}
   {{- end }}
   gateways:
-  {{ if .Values.istio.virtualservice.gateways }}
+  {{- if .Values.istio.gateway.enabled }}
+  - {{ include "generic.fullname" . }}
+  {{- else }}
   {{- range .Values.istio.virtualservice.gateways }}
   - {{ . | quote }}
-  {{- end }}
-  {{ else }}
-  - {{ include "generic.fullname" . }}
+  {{- end }}  
   {{- end }}
   http:
   - match:

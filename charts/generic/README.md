@@ -4,7 +4,7 @@ This document describe how to use generic helm chart to install any application
 
 ## Requirements
 
-* Kubernetes 1.18 or newer cluster with RBAC (Role-Based Access Control) enabled is required.
+* Kubernetes 1.20 or newer cluster with RBAC (Role-Based Access Control) enabled is required.
 * Helm 3
 * Kubectl client installed and configured to access Kubernetes Cluster.
 

@@ -6,7 +6,8 @@
 
 {{- range $host := .Values.ingress.hosts }}
   {{- range .paths }}
-  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ . }}
+  https://{{ $host.host }}{{ . }}
+  https://{{ $host.host }}{{ . }}
   {{- end }}
 {{- end }}
 {{- else if .Values.istio.enabled }}
@@ -16,7 +17,8 @@
 {{- $paths := .Values.istio.virtualservice.paths -}}
 {{- range $host := .Values.istio.dnsNames }}
   {{- range $paths }}
-  http{{ if $.Values.istio.tls.enabled }}s{{ end }}://{{ $host }}{{ . }}
+  http://{{ $host }}{{ . }}
+  https://{{ $host }}{{ . }}
   {{- end }}
 {{- end }}
 {{- else if contains "LoadBalancer" .Values.service.type }}

@@ -23,7 +23,7 @@ spec:
       httpsRedirect: {{ .Values.istio.gateway.httpsRedirect }} # sends 301 redirect for http requests
     {{- end }}
   {{- end }}  
-  {{- if and (.Values.istio.tls.enabled) (.Values.istio.tls.localCert) }}
+  {{- if and (.Values.istio.gateway.enabled) (.Values.istio.gateway.localCert) }}
   - port:
       number: 443
       name: https
@@ -34,7 +34,7 @@ spec:
     {{- end }}
     tls:
       mode: SIMPLE
-      credentialName: {{ .Values.istio.tls.credentialName }}
+      credentialName: {{ .Values.istio.gateway.credentialName }}
   {{- else }} 
   - port:
       number: 443
