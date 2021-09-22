@@ -43,6 +43,15 @@ app.kubernetes.io/name: {{ include "generic.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
+{{/*
+Istio labels
+*/}}
+{{- define "generic.istioLabels" -}}
+{{- if .Values.istio.enabled }}
+sidecar.istio.io/inject: "true"
+{{- end }}
+{{- end }}
+
 
 {{/*
 DataDog environment.

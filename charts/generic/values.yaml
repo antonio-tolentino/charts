@@ -1,12 +1,12 @@
 # Generic helm chart configurations
 
-##### BEGIN - Tekcton Triggers duty #####
+##### BEGIN - Tekton Triggers duty #####
 image:
   repository: ""
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
-##### END - Tekcton Triggers duty #####
+##### END - Tekton Triggers duty #####
 
 
   
@@ -65,8 +65,8 @@ configMap:
   enabled: false
   name: configmap-example
   keys: 
-   logFile: /tmp/output.log
-   logSize: 10m
+   #logFile: /tmp/output.log
+   #logSize: 10m
    
 ## Linkedsecrets
 linkedsecrets:
