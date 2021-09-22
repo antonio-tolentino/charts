@@ -29,8 +29,6 @@ helm.sh/chart: {{ include "generic.chart" . }}
 {{ include "generic.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Values.image.tag | quote }}
-app: {{ .Release.Name }}
-version: {{ .Values.image.tag | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
@@ -48,6 +46,8 @@ Istio labels
 */}}
 {{- define "generic.istioLabels" -}}
 {{- if .Values.istio.enabled }}
+app: {{ .Release.Name }}
+version: {{ .Values.image.tag | quote }}
 sidecar.istio.io/inject: "true"
 {{- end }}
 {{- end }}
