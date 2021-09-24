@@ -63,11 +63,11 @@ helm upgrade --install <RELEASE-NAME> \
 --set image.tag=<IMAGE-TAG> \
 --set linkedsecrets.enabled=true \
 --set linkedsecrets.name=myapp-linkedsecrets \
---set linkedsecrets.spec.providerDataFormat=JSON \
---set linkedsecrets.spec.providerOptions."keyvault"=linkedsecret \
---set linkedsecrets.spec.providerOptions."secret"=opaque-secret-json \
---set linkedsecrets.spec.secretName=myapp-kubernetes-secret \
---set linkedsecrets.spec.schedule="\"@every 5m\"" \
---set linkedsecrets.spec.deployment=<ROLLOUT-RESTART-DEPLOYMENT-NAME> \
+--set linkedsecrets.providerDataFormat=JSON \
+--set linkedsecrets.providerOptions."keyvault"=linkedsecret \
+--set linkedsecrets.providerOptions."secret"=opaque-secret-json \
+--set linkedsecrets.secretName=myapp-kubernetes-secret \
+--set linkedsecrets.schedule="\"@every 5m\"" \
+--set linkedsecrets.deployment=<ROLLOUT-RESTART-DEPLOYMENT-NAME> \
 <REPO-NAME>/generic
 ```
