@@ -1,5 +1,7 @@
 ---
 
+IMAGE = "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+
 {{- if .Values.ingress.enabled }}
 
 1. Use URL bellow to access aplication [ {{ .Release.Name }} ]:
