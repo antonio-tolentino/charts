@@ -41,8 +41,8 @@ spec:
       name: https
       protocol: HTTP2
     hosts:
-    {{- range .Values.istio.hosts }}
-    - {{ .host | quote }}
+    {{- range .Values.istio.dnsNames }}
+    - {{ . | quote }}
     {{- end }}
     tls:
       mode: PASSTHROUGH
