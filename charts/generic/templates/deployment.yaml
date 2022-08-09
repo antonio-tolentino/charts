@@ -35,15 +35,34 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          # configMap and secret as environment variables
           envFrom:
-            {{- if .Values.configMap.enabled }}
+            {{- if and (.Values.configMap.enabled) (not .Values.configMap.volume.enabled) }}
             - configMapRef:
                 name: {{ .Values.configMap.name }}
             {{- end }}
-            {{- if .Values.linkedsecrets.enabled }}
+            {{- if and (.Values.secret.enabled) (not .Values.secret.volume.enabled) }}
             - secretRef:
-                name: {{ .Values.linkedsecrets.secretName}}
+                name: {{ .Values.secret.name}}
+            {{- end }}                
+            {{- if and (.Values.linkedsecrets.enabled) (not .Values.linkedsecrets.volume.enabled) }}
+            - secretRef:
+                name: {{ .Values.linkedsecrets.secretName}}                
             {{- end }} 
+          # configMap and secret as volumes
+          volumeMounts:
+          {{- if and .Values.configMap.enabled .Values.configMap.volume.enabled }}  
+          - name: {{ .Values.configMap.name }}-volume
+            mountPath: {{ .Values.configMap.volume.mountPath }}  
+          {{- end }}
+          {{- if and .Values.secret.enabled .Values.secret.volume.enabled }}
+          - name: {{ .Values.secret.name}}-volume
+            mountPath: {{ .Values.secret.volume.mountPath }}      
+          {{- end }}       
+          {{- if and .Values.linkedsecrets.enabled .Values.linkedsecrets.volume.enabled }}
+          - name: {{ .Values.linkedsecrets.secretName}}-volume
+            mountPath: {{ .Values.linkedsecrets.volume.mountPath }}      
+          {{- end }}                   
           ports:
             - name: http
               containerPort: {{ .Values.containerPort}}
@@ -54,6 +73,22 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        {{- if and .Values.configMap.enabled .Values.configMap.volume.enabled }} 
+        - name: {{ .Values.configMap.name }}-volume
+          configMap:
+            name: {{ .Values.configMap.name }} 
+        {{- end }}     
+        {{- if and .Values.secret.enabled .Values.secret.volume.enabled }} 
+        - name: {{ .Values.secret.name }}-volume
+          secret:
+            secretName: {{ .Values.secret.name }} 
+        {{- end }}       
+        {{- if and .Values.linkedsecrets.enabled .Values.linkedsecrets.volume.enabled }} 
+        - name: {{ .Values.linkedsecrets.secretName }}-volume
+          secret:
+            secretName: {{ .Values.linkedsecrets.secretName }} 
+        {{- end }}                  
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -1,14 +1,18 @@
 # Generic
 
-This document describe how to use generic helm chart to install any application
+This document describes how to use this helm chart to configure and install an application.
 
 ## Requirements
 
 * Kubernetes 1.20 or newer cluster with RBAC (Role-Based Access Control) enabled is required.
-* Helm 3
-* Kubectl client installed and configured to access Kubernetes Cluster.
+* Helm 3.
+* Kubectl client must be installed and configured.
+* Linkedsecrets must be installed and configured.
+* Nginx Ingress controller must be installed and configured if you intend to exspose applications using it.
+* Cert-manager must be installed and configured if you intend to use it to generete TLS certificates.
+* Istio must be installed and configured if you intend to exspose applications using it.
 
-## Basic Example
+## Basic Examples
 
 ```bash
 helm upgrade --install <RELEASE-NAME> \

@@ -1,17 +1,14 @@
 # Generic helm chart configurations
 
-##### BEGIN - Tekton Triggers duty #####
+
 image:
   repository: ""
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
-##### END - Tekton Triggers duty #####
 
 
-  
-  
-##### BEGIN - Developer team duty #####
+   
 replicaCount: 1  
   
 service:
@@ -63,14 +60,31 @@ autoscaling:
 ## Application configmap 
 configMap:
   enabled: false
+  volume:
+    enabled: false
+    mountPath: "/etc/config"
   name: configmap-example
+  keys:
+   #logLevel: Info
+
+
+## Application secrets
+secret:
+  enabled: false
+  volume:
+    enabled: false
+    mountPath: "/etc/secrets"
+  name: myapp-kubernetes-secret
   keys: 
-   #logFile: /tmp/output.log
-   #logSize: 10m
-   
+   # do not define and secret here or in your custom file in code repository
+   # Keys/values must be inject during pipeline execution if Linkedsecrets is not being used.
+
 ## Linkedsecrets
 linkedsecrets:
   enabled: false
+  volume:
+    enabled: false
+    mountPath: "/etc/secrets"  
   name: myapp-linkedsecrets
   #provider: Azure # (GCP | AWS | Azure | IBM)
   providerDataFormat: JSON # (JSON | PLAIN)
@@ -85,12 +99,6 @@ linkedsecrets:
   #deployment: myapp 
 
   
-##### END - Developer team duty #####  
-
-
-
-##### BEGIN - Devops team duty #####
-
 imagePullSecrets: []
 
 serviceAccount:
@@ -131,8 +139,7 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-
-## istio service mesh
+## Istio service mesh
 istio:
   enabled: false
   dnsNames: 
@@ -147,7 +154,7 @@ istio:
     httpsRedirect: false
     http: false
     ## true =  Set credentialName with the secret name to store private key and certificate chain (letsencrypt|imported certs)
-    ## false = private key and certificate chain is expected to be attached to Load Balancer
+    ## false = private key and certificate chain are expected to be attached to Load Balancer
     localCert: false
     credentialName: mydomain-tls
   virtualservice:
@@ -155,7 +162,7 @@ istio:
       - istio-system/my-gateway
     paths: 
       - /
-    
+
 
 nodeSelector: {}
 
@@ -163,4 +170,3 @@ tolerations: []
 
 affinity: {}
 
-##### END - Devops team duty #####
