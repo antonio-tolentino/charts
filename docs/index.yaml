@@ -3,10 +3,10 @@ entries:
   attools:
   - apiVersion: v2
     appVersion: v1.0.0
-    created: "2025-05-17T15:03:13.945936272-03:00"
+    created: "2025-05-17T15:07:27.697428031-03:00"
     description: attools chart deploy pod with some diagnosis tools and clients for
       testing and troubleshooting.
-    digest: 2eabb787e90867503ef50653f91bb6e66f67b2fa333b1112360140b6c10735ee
+    digest: d8345abc20304a8dc5fe2bf5b9a61304264af8b9fe14faab0bff4bf2fb8a2508
     keywords:
     - attools
     name: attools
@@ -16,9 +16,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-05-17T15:03:13.946483478-03:00"
+    created: "2025-05-17T15:07:27.698034933-03:00"
     description: Generic Helm chart for Kubernetes
-    digest: fcd1c3b9dc2fc07267d5b3e69f3e89b09924dc750c4bb5a4004deedf191eb709
+    digest: a62fa00537aee3911be664ba4702fb856b5993eaef25e0a477c9c4f5d014d3a3
     name: generic
     type: application
     urls:
@@ -27,12 +27,12 @@ entries:
   nginx:
   - apiVersion: v2
     appVersion: 1.27.5
-    created: "2025-05-17T15:03:13.946746123-03:00"
+    created: "2025-05-17T15:07:27.698291017-03:00"
     description: A Helm chart for Kubernetes
-    digest: 8e345631ec0249a5d918d0afd73ecff8f97a07951de34e87e731516db4358a4d
+    digest: c1953a8040e91a9fcedaa8786bf784e6880d7fda058c90beff7c2e8b2850da1e
     name: nginx
     type: application
     urls:
     - https://antonio-tolentino.github.io/charts/nginx-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-17T15:03:13.945605202-03:00"
+generated: "2025-05-17T15:07:27.697077641-03:00"
